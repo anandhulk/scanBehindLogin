@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <script>
+        // Function to check if the user is logged in
+        function checkLogin() {
+            var loggedIn = getCookie("loggedIn");
+            if (!loggedIn) {
+                // Redirect to the login page if not logged in
+                window.location.href = "index.html";
+            }
+        }
+
+        // Function to get the value of a cookie by name
+        function getCookie(name) {
+            var cookies = document.cookie.split("; ");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].split("=");
+                if (cookie[0] === name) {
+                    return cookie[1];
+                }
+            }
+            return null;
+        }
+
+        // Check login status when the page loads
+        checkLogin();
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="about-container">
+        <h1>About Us</h1>
+        <p>Welcome to our website! We are a fictitious company dedicated to providing quality services.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius justo eu purus commodo, auctor dapibus libero ultricies. Suspendisse potenti.</p>
+        <p>Nulla facilisi. Proin vel justo in orci aliquam fringilla. Duis tristique, dui vel auctor tincidunt, felis ipsum malesuada nulla, nec tincidunt risus elit vel dolor.</p>
+        <p>Thank you for visiting our website!</p>
+    </div>
+    <script>
+        // Function to set a cookie with a given name, value, and expiration date
+        function setCookie(name, value, daysToExpire) {
+            var expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + daysToExpire);
+
+            var cookie = name + "=" + value + "; expires=" + expirationDate.toUTCString() + "; path=/";
+            document.cookie = cookie;
+        }
+
+        // Set dummy cookies
+        setCookie("testAbout", "testAbout", 91); // expires in 1 day
+        setCookie("username", "exampleUser", 41); // expires in 1 day
+        setCookie("test","about",24);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script>
+        // Function to check if the user is logged in
+        function checkLogin() {
+            var loggedIn = getCookie("loggedIn");
+            if (!loggedIn) {
+                // Redirect to the login page if not logged in
+                window.location.href = "index.html";
+            }
+        }
+
+        // Function to get the value of a cookie by name
+        function getCookie(name) {
+            var cookies = document.cookie.split("; ");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].split("=");
+                if (cookie[0] === name) {
+                    return cookie[1];
+                }
+            }
+            return null;
+        }
+
+        // Function to logout (clear the login cookie)
+        function logout() {
+            document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            // Redirect to the login page after logout
+            window.location.href = "index.html";
+        }
+
+        // Check login status when the page loads
+        checkLogin();
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .welcome-container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="welcome-container">
+        <h1>Welcome to the Home Page</h1>
+        <p>Congratulations! You have successfully logged in.</p>
+        <p><a href="#" onclick="logout()">Logout</a></p>
+        <p><a href="about.html" >About</a></p>
+    </div>
+    <script>
+        // Function to set a cookie with a given name, value, and expiration date
+        function setCookie(name, value, daysToExpire) {
+            var expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + daysToExpire);
+
+            var cookie = name + "=" + value + "; expires=" + expirationDate.toUTCString() + "; path=/";
+            document.cookie = cookie;
+        }
+
+        setCookie("homePage","true",32);
+    </script>
+</body>
+</html>
