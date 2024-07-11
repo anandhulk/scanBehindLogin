@@ -139,6 +139,7 @@
         if (username === "user" && password === "password") {
           // Set a cookie to indicate the user is logged in (replace with secure authentication)
           document.cookie = "loggedIn=true; path=/";
+          window.location.assign("/home.html");
         } else {
           alert("Invalid credentials. Please try again.");
         }
